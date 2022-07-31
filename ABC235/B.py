@@ -1,7 +1,10 @@
 N = int(input())
-A = list(map(int, input().split()))
+H = list(map(int, input().split()))
 
-import collections
-
-c  = collections.Counter(A)
-print(c.most_common()[-1][0])
+ans = H[0]
+for i in range(N - 1):
+    if H[i] < H[i + 1]:
+        ans = H[i + 1]
+    else:
+        break
+print(ans)
