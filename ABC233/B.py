@@ -1,22 +1,6 @@
-from operator import iadd
-from re import I
-
-
-def solve():
-    ans = 0
-    # 2点の組み合わせ（完全に２重ループする必要なし）
-    for i in range(N):
-        x1, y1 = XY[i]
-        # このiをNにする必要がない
-        for j in range(i):
-            if i == 0:
-                continue
-            x2, y2 = XY[j]
-            l = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
-            ans = max(ans, l)
-    return ans
-
-
-N = int(input())
-XY = [list(map(int, input().split())) for _ in range(N)]
-print(solve())
+L, R = map(int, input().split())
+L = L - 1  # Lを0はじまりにします（Rはスライスの終端になりますが、R自体は含まないのでそのままでいいです）
+S = input()
+S_list = list(S)  # 文字列はイミュータブル（変更不可）なので、一度文字列のリストにします
+S_list[L:R] = S_list[L:R][::-1]  # [::-1] で反転したものを代入します
+print(*S_list, sep='')
