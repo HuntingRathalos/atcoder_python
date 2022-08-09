@@ -1,13 +1,11 @@
-def solve():
-    S = input()
-    T = input()
-    A = [ord(char) - ord('a') for char in S]
-    B = [ord(char) - ord('a') for char in T]
-    for k in range(26):
-        C = [(x + k) % 26 for x in A]
-        if B == C:
-            return True
-    return False
+from collections import Counter
 
-
-print("Yes" if solve() else "No")
+N = int(input())
+C = Counter()
+for _ in range(N):
+    s = input()
+    C[s] += 1
+mc = C.most_common(1)  # [("takahashi", 3)] のような長さ1のリストが得られます
+m_tuple = mc[0]  # ("takahashi", 3) を取り出します
+m_name, m_count = m_tuple
+print(m_name)
