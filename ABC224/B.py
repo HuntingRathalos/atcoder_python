@@ -1,17 +1,14 @@
-from sys import stdin
+def calc():
+    for row1 in range(H):
+        for row2 in range(row1 + 1, H):
+            for col1 in range(W):
+                for col2 in range(col1 + 1, W):
+                    if A[row1][col1] + A[row2][col2] > A[row2][col1] + A[row1][col2]:
+                        return False
+    return True
 
-def solve():
-    def judge(list):
-        return len(list) == N - 1
 
-    N = int(stdin.readline())
-    S = [[] for _ in range(N + 1)]
-    for _ in range(N - 1):
-        a, b = map(int, stdin.readline().split())
-        S[a].append(b)
-        S[b].append(a)
-    for i in range(1, N + 1):
-        if judge(S[i]):
-            return "Yes"
-    return "No"
-print(solve())
+H, W = map(int, input().split())
+A = [list(map(int, input().split())) for _ in range(H)]
+
+print("Yes" if calc() else "No")
