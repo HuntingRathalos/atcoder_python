@@ -1,14 +1,11 @@
-def calc():
-    for row1 in range(H):
-        for row2 in range(row1 + 1, H):
-            for col1 in range(W):
-                for col2 in range(col1 + 1, W):
-                    if A[row1][col1] + A[row2][col2] > A[row2][col1] + A[row1][col2]:
-                        return False
-    return True
+S = input()
+n = len(S)
+L = []
 
+for _ in range(n):
+    L.append(S)
+    S = S[1:] + S[0]
+L.sort()
 
-H, W = map(int, input().split())
-A = [list(map(int, input().split())) for _ in range(H)]
-
-print("Yes" if calc() else "No")
+print(L[0])
+print(L[-1])
