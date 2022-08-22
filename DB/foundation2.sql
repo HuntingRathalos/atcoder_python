@@ -1,29 +1,29 @@
-# 文字列の場合クォーテーション必要
+-- 文字列の場合クォーテーション必要
 insert into test_db.table名(属性１、属性２) values ("値１", 値２)
-# 単一レコード
+-- 単一レコード
 insert into test_db.prefs(name, updated_by) values ("北海道", "yokogi");
-# 複数レコード
+-- 複数レコード
 insert into test_db.prefs(name, updated_by) values
 ("山形", "yokogi"),
 ("青森", "yokogi");
 
 select * from test_db.prefs
-# asでlabelをつけられる(asは省略可)
-# mp は as mpの省略table名にlabelをつけてるイメージ
-# count(*)はcount(1)でもおけ
+-- asでlabelをつけられる(asは省略可)
+-- mp は as mpの省略table名にlabelをつけてるイメージ
+-- count(*)はcount(1)でもおけ
 select count(*) as "件数" from test_db.prefs mp
 select count(*) as "件数" from test_db.prefs
 select count(*) "件数" from test_db.prefs
 
-# この場合はnameにlabelをつけている
+-- この場合はnameにlabelをつけている
 select id, name "都道府県名" from test_db.prefs
-# distinctで重複レコード省けるnameが北海道のレコード２件あったら１件だけ取得する
+-- distinctで重複レコード省けるnameが北海道のレコード２件あったら１件だけ取得する
 select count(distinct name) "都道府県名" from test_db.prefs
 
-# レコード全件削除
+-- レコード全件削除
 delete from test_db.prefs;
 
-# auto_incrementの初期化(レコード削除時にincrenemtを振り直すため)
+-- auto_incrementの初期化(レコード削除時にincrenemtを振り直すため)
 alter table test_db.prefs auto_increment = 1;
 -- 一致
 select * from test_db.stocks
