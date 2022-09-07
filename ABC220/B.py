@@ -1,13 +1,14 @@
-def judge():
-        if S == T:
-                return True
-        for i in range(len(S) - 1):
-                L = list(S)
-                L[i], L[i + 1] = L[i + 1], L[i]
-                S2 = ''.join(L)
-                if S2 == T:
-                        return True
-        return False
-S = input()
-T = input()
-print('Yes' if judge() else 'No')
+K = int(input())
+A, B = input().split()
+print(int(A, K) * int(B, K))
+
+# def convert(x, k):
+#         ret = 0
+#         i = 0
+#         while x > 0:
+#                 ret += (x % 10) * (k ** i)
+#                 x //= 10
+#                 i += 1
+#         return ret
+# ans = convert(A, K) * (B, K)
+# print(ans)
