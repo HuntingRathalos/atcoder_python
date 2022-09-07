@@ -1,14 +1,13 @@
-K = int(input())
-A, B = input().split()
-print(int(A, K) * int(B, K))
-
-# def convert(x, k):
-#         ret = 0
-#         i = 0
-#         while x > 0:
-#                 ret += (x % 10) * (k ** i)
-#                 x //= 10
-#                 i += 1
-#         return ret
-# ans = convert(A, K) * (B, K)
+S = [input() for _ in range(3)]
+T = list(map(int, list(input())))
+# ans = ''
+# for t in T:
+#     ans += S[t - 1]
 # print(ans)
+
+# 文字列を+=で連結するのは低速で、文字数が多くなるとTLEになる恐れがあり
+# リストに文字列をappendして、最後に''.join(L)としてくっつける方法
+L = []
+for t in T:
+    L.append(S[t - 1])
+print(''.join(L))
